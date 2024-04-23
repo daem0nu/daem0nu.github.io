@@ -265,6 +265,11 @@
             </span>
           </div>
         </header>
+          
+    <div id="toc">
+        <strong class="sidebar-title">文章目录</strong>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-NCTF-Web%E5%A4%8D%E7%8E%B0"><span class="toc-text">2023 NCTF Web复现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Wait-What"><span class="toc-text">1.Wait-What</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Click-House"><span class="toc-text">2.Click-House</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-webshellgenerator"><span class="toc-text">3.webshellgenerator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-EvilMQ"><span class="toc-text">4.EvilMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol></li></ol></li></ol>
+    </div>
 
           <div class="page-content"><h1 id="2023-NCTF-Web复现"><a href="#2023-NCTF-Web复现" class="headerlink" title="2023 NCTF Web复现"></a>2023 NCTF Web复现</h1><h2 id="1-Wait-What"><a href="#1-Wait-What" class="headerlink" title="1.Wait-What"></a>1.Wait-What</h2><p>第一处waf需要我们正则绕过<code>/^hacker$|^admin$/g</code>,<code>let test1 = banned_users_regex.test(username)</code>,其中<code>banned_users_regex</code>的值即<code>/^hacker$|^admin$/g</code>，而username需要为admin才能获取flag，一开始我尝试了<code>admin\u000a</code>,即使能绕过第一处waf，甚至第二处waf，但是下面这部分就无法通过</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-keyword">if</span> (username <span class="hljs-keyword">in</span> users &amp;&amp; users[username] === password) &#123;<br>    <span class="hljs-title function_">next</span>()<br>    <span class="hljs-keyword">return</span><br>&#125;<br>res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;用户名或密码错误，鉴权失败！&quot;</span>)<br></code></pre></td></tr></table></figure>
@@ -492,5 +497,10 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+
+  <!--<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+    <a title="返回顶部"><img src="../../source/img/totop.png"/></a>
+</div>-->
+
 </body>
 </html>

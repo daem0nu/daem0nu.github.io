@@ -36,4 +36,3 @@
       : area.classList.remove("blurry");
   });
 })();
-

@@ -129,7 +129,6 @@ ol {
     position: relative;
     counter-increment: li; }
     ol li::before {
-      content: counter(li);
       display: inline-block;
       width: 1em;
       margin-right: 0.5em;
